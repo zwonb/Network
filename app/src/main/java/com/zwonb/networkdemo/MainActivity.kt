@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestGet() {
-        lifecycleScope.httpString {
+        lifecycleScope.httpNetwork<String> {
             onStart { text.text = "请求中..." }
             onRequest { apiCreate<ApiService>().getArticle() }
             onSuccess {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPost() {
-        lifecycleScope.httpString {
+        lifecycleScope.httpNetwork<String> {
             onStart { text.text = "请求中..." }
             onRequest { apiCreate<ApiService>().searchArticle("android11") }
             onSuccess {

@@ -62,8 +62,8 @@ object ApiCreator {
 
 val gson by lazy { Gson() }
 
-fun CoroutineScope.httpString(dsl: NetworkDSL<String>.() -> Unit) =
-    NetworkDSL<String>().apply(dsl).launch(this)
+fun <T> CoroutineScope.httpNetwork(dsl: NetworkDSL<T>.() -> Unit) =
+    NetworkDSL<T>().apply(dsl).launch(this)
 
 fun <T> CoroutineScope.httpRequest(dsl: RequestDSL<T>.() -> Unit) =
     RequestDSL<T>().apply(dsl).launch(this)
