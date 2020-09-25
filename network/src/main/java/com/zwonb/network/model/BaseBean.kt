@@ -11,9 +11,6 @@ import androidx.annotation.Keep
 @Keep
 data class BaseBean<T>(val ydCode: String, val ydMsg: String, val ydBody: T)
 
-@Keep
-data class ListBean<T>(val list: List<T>)
-
 internal const val CODE_SUCCESS = "100"
 internal const val CODE_TOAST = "101"
 internal const val CODE_OTHER_LOGIN = "102"

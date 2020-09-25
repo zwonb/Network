@@ -28,7 +28,7 @@ class DownloadDSL : NetworkDSL<Response<ResponseBody>>() {
     }
 
     private var progress: (suspend (Int) -> Unit)? = null
-    private var downloadComplete: (() -> Unit)? = null
+    private var downloadComplete: (suspend () -> Unit)? = null
 
     private var callbackTime = 0L
 
@@ -40,7 +40,7 @@ class DownloadDSL : NetworkDSL<Response<ResponseBody>>() {
         throw Throwable("请重写onDownloadComplete(block)")
     }
 
-    fun onDownloadComplete(block: () -> Unit) {
+    fun onDownloadComplete(block: suspend () -> Unit) {
         downloadComplete = block
     }
 

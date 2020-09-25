@@ -1,5 +1,6 @@
 package com.zwonb.network.dsl
 
+import com.zwonb.network.NetworkConfig
 import com.zwonb.network.model.*
 
 /**
@@ -41,10 +42,15 @@ open class RequestDSL<T> : NetworkDSL<BaseBean<T>>() {
         when (response.ydCode) {
             CODE_SUCCESS -> success(response)
             CODE_TOAST -> toast?.invoke(response.ydMsg)
+                ?: NetworkConfig.toast?.invoke(response.ydMsg)
             CODE_OTHER_LOGIN -> otherLogin?.invoke(response.ydMsg)
+                ?: NetworkConfig.otherLogin?.invoke(response.ydMsg)
             CODE_DIALOG -> dialog?.invoke(response.ydMsg)
+                ?: NetworkConfig.dialog?.invoke(response.ydMsg)
             CODE_NO_DATA -> noData?.invoke(response.ydMsg)
+                ?: NetworkConfig.noData?.invoke(response.ydMsg)
             else -> unknown?.invoke(response)
+                ?: NetworkConfig.unknown?.invoke(response)
         }
     }
 

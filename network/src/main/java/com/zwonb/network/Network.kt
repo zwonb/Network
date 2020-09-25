@@ -26,9 +26,9 @@ object ApiCreator {
             .baseUrl(NetworkConfig.url)
             .client(NetworkConfig.client ?: OkHttpClient())
             .apply {
-                val callAdapter = NetworkConfig.converter
-                if (!callAdapter.isNullOrEmpty()) {
-                    for (factory in callAdapter) {
+                val converter = NetworkConfig.converter
+                if (!converter.isNullOrEmpty()) {
+                    for (factory in converter) {
                         addConverterFactory(factory)
                     }
                 }

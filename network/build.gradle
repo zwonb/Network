@@ -58,7 +58,7 @@ publish {
     userOrg = 'zwonb'
     groupId = 'com.zwonb'
     artifactId = 'network'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.4'
     desc = 'android http'
     website = 'https://github.com/zwonb/Network'
 }
